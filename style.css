@@ -1,0 +1,345 @@
+/* 1. Thiết lập chung */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+  background-color: #0d0f12; /* Màu nền tối chuẩn */
+  color: #ffffff;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+/* 2. Header (Thanh điều hướng) */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto 30px; /* Căn giữa và cách phần dưới 30px */
+  padding: 15px 25px;
+  background: #161a23;
+  border-radius: 10px;
+  border: 1px solid #232936;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  font-size: 22px;
+  background: #e60012;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.logo-text small {
+  display: block;
+  font-size: 10px;
+  color: #8a8d93;
+}
+
+.logo-text strong {
+  font-size: 18px;
+  color: #fff;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: #a0a5b1;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+}
+
+.btn-store {
+  background: #3a080c;
+  color: #ff4d4d !important;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid #ff1a1a;
+}
+
+/* 3. Hero Banner */
+.hero {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 40px; /* Căn giữa banner */
+}
+
+.sub-title {
+  color: #e60012;
+  font-weight: bold;
+  font-size: 13px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.hero h1 {
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+.highlight {
+  color: #e60012;
+}
+
+.description {
+  color: #9aa0ac;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+}
+
+.stat-item strong {
+  display: block;
+  font-size: 20px;
+  color: #e60012;
+}
+
+.stat-item span {
+  font-size: 11px;
+  color: #7a7e85;
+}
+
+/* 4. Khu vực sản phẩm */
+.product-section {
+  max-width: 1200px; /* Mở rộng toàn khung */
+  margin: 0 auto;
+}
+
+.brand-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  background: #161a23;
+  border: 1px solid #232936;
+  color: #8a8d93;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  background: #1f2430;
+  color: #ffffff;
+}
+
+.tab-btn.active {
+  background: #232936;
+  color: #fff;
+  border-color: #3b4354;
+}
+
+.filter-bar {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.filter-bar input, .filter-bar select {
+  background: #161a23;
+  border: 1px solid #232936;
+  color: #fff;
+  padding: 12px;
+  border-radius: 6px;
+  outline: none;
+}
+
+.filter-bar input { flex: 2; }
+.filter-bar select { flex: 1; }
+
+/* 5. Lưới sản phẩm & Card */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Cột rộng tràn đều */
+  gap: 25px;
+}
+
+.card {
+  background: #161a23;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #232936;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #e60012;
+  box-shadow: 0 8px 20px rgba(230, 0, 18, 0.15);
+}
+
+.card-img {
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 15px;
+  overflow: hidden;
+}
+
+.card-img img {
+  max-height: 180px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-img img {
+  transform: scale(1.06);
+}
+
+.badge-brand {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #e60012;
+  color: #fff;
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+  z-index: 2;
+}
+
+.badge-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #ffcc00;
+  color: #000;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 3px 6px;
+  border-radius: 4px;
+  z-index: 2;
+}
+
+.badge-sale {
+  position: absolute;
+  top: 36px;
+  left: 12px;
+  background: #e60012;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
+  z-index: 2;
+}
+
+.card-info {
+  padding: 18px;
+}
+
+.card-level {
+  font-size: 11px;
+  color: #7a7e85;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.card-title {
+  font-size: 18px;
+  margin: 6px 0;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.card-rating {
+  color: #ffc107;
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+
+.card-rating span {
+  color: #8a8d93;
+  margin-left: 4px;
+  font-size: 11px;
+}
+
+.specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  font-size: 11px;
+  color: #9aa0ac;
+  background: #0d0f12;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  border: 1px solid #1a1f2c;
+}
+
+.specs strong {
+  color: #e2e8f0;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.price {
+  color: #e60012;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.sold {
+  font-size: 11px;
+  color: #7a7e85;
+}
+
+.btn-add {
+  width: 100%;
+  background: #e60012;
+  color: #fff;
+  border: none;
+  padding: 11px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-add:hover {
+  background: #c40010;
+}
+
+.btn-add:active {
+  transform: scale(0.98);
+}
