@@ -14,7 +14,6 @@
         <div id="login-box">
             <h3 class="text-center mb-3">Đăng Nhập</h3>
             
-            <!-- Thông báo lỗi/thành công -->
             <div id="login-error" class="alert alert-danger d-none" role="alert"></div>
             <div id="login-success" class="alert alert-success d-none" role="alert"></div>
 
@@ -45,7 +44,6 @@
         <div id="register-box" class="d-none">
             <h3 class="text-center mb-3">Tạo Tài Khoản</h3>
             
-            <!-- Thông báo lỗi khi đăng ký -->
             <div id="register-error" class="alert alert-danger d-none" role="alert"></div>
 
             <form id="registerForm">
@@ -74,7 +72,6 @@
     </div>
 
     <script>
-        // Mặc định tạo tài khoản cứng Hungbi2605 nếu chưa từng có dữ liệu
         if (!localStorage.getItem("accounts")) {
             const initialAccounts = [
                 { username: "Hungbi2605", password: "Hungbi2605@hehe" }
@@ -82,12 +79,10 @@
             localStorage.setItem("accounts", JSON.stringify(initialAccounts));
         }
 
-        // Lấy danh sách tài khoản từ localStorage
         function getAccounts() {
             return JSON.parse(localStorage.getItem("accounts")) || [];
         }
 
-        // Chuyển đổi qua lại giữa Đăng nhập và Đăng ký
         document.getElementById('show-register').addEventListener('click', function(e) {
             e.preventDefault();
             document.getElementById('login-box').classList.add('d-none');
@@ -111,7 +106,6 @@
 
             errorMsg.classList.add('d-none');
 
-            // 1. Kiểm tra mật khẩu nhập lại
             if (password !== confirmPassword) {
                 errorMsg.innerText = "Mật khẩu nhập lại không khớp!";
                 errorMsg.classList.remove('d-none');
@@ -119,8 +113,6 @@
             }
 
             const accounts = getAccounts();
-
-            // 2. Kiểm tra tên tài khoản đã tồn tại chưa
             const isExist = accounts.some(acc => acc.username.toLowerCase() === username.toLowerCase());
             if (isExist) {
                 errorMsg.innerText = "Tên đăng nhập này đã tồn tại!";
@@ -128,20 +120,12 @@
                 return;
             }
 
-            // 3. Lưu tài khoản mới vào localStorage
             accounts.push({ username: username, password: password });
             localStorage.setItem("accounts", JSON.stringify(accounts));
 
-            // Reset form đăng ký
-            document.getElementById('registerForm').reset();
-
-            // Chuyển về màn hình đăng nhập và báo thành công
-            document.getElementById('register-box').classList.add('d-none');
-            document.getElementById('login-box').classList.remove('d-none');
-            
-            const loginSuccess = document.getElementById('login-success');
-            loginSuccess.innerText = "Đăng ký thành công! Hãy đăng nhập bằng tài khoản mới.";
-            loginSuccess.classList.remove('d-none');
+            // Đăng ký xong tự động lưu luôn vào currentUser để sang trang chính nhận diện luôn
+            localStorage.setItem("currentUser", username);
+            window.location.href = "index.html";
         });
 
         // ================= XỬ LÝ ĐĂNG NHẬP =================
@@ -157,15 +141,13 @@
             successMsg.classList.add('d-none');
 
             const accounts = getAccounts();
-
-            // Kiểm tra xem tên đăng nhập và mật khẩu có khớp trong danh sách không
             const userFound = accounts.find(acc => acc.username === username && acc.password === password);
 
             if (userFound) {
-                // Đúng thì chuyển sang trang index.html
+                // QUAN TRỌNG: Lưu lại tên người dùng vào localStorage để trang chính hiển thị
+                localStorage.setItem("currentUser", username);
                 window.location.href = "index.html";
             } else {
-                // Sai thì báo lỗi
                 errorMsg.innerText = "Tên đăng nhập hoặc mật khẩu không đúng!";
                 errorMsg.classList.remove('d-none');
             }

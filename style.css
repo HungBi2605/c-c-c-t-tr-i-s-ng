@@ -1,4 +1,4 @@
-/* 1. Thiết lập chung */
+/* --- 1. Thiết lập chung --- */
 * {
   margin: 0;
   padding: 0;
@@ -13,7 +13,7 @@ body {
   min-height: 100vh;
 }
 
-/* 2. Header (Thanh điều hướng) */
+/* --- 2. Header (Thanh điều hướng) --- */
 .header {
   display: flex;
   justify-content: space-between;
@@ -75,7 +75,7 @@ body {
   border: 1px solid #ff1a1a;
 }
 
-/* 3. Hero Banner */
+/* --- 3. Hero Banner --- */
 .hero {
   text-align: center;
   max-width: 800px;
@@ -125,7 +125,7 @@ body {
   color: #7a7e85;
 }
 
-/* 4. Khu vực sản phẩm */
+/* --- 4. Khu vực sản phẩm --- */
 .product-section {
   max-width: 1200px; /* Mở rộng toàn khung */
   margin: 0 auto;
@@ -178,7 +178,7 @@ body {
 .filter-bar input { flex: 2; }
 .filter-bar select { flex: 1; }
 
-/* 5. Lưới sản phẩm & Card */
+/* --- 5. Lưới sản phẩm & Card --- */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Cột rộng tràn đều */
@@ -342,4 +342,93 @@ body {
 
 .btn-add:active {
   transform: scale(0.98);
+}
+
+/* --- 6. Bổ sung CSS cho giỏ hàng, Modal & Thông báo Toast --- */
+.cart-modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.cart-content {
+  background: #161a23;
+  border: 1px solid #232936;
+  width: 90%; max-width: 500px;
+  border-radius: 12px;
+  padding: 20px;
+  color: #fff;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #232936;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.close-cart {
+  background: none; 
+  border: none; 
+  color: #fff; 
+  font-size: 20px; 
+  cursor: pointer;
+}
+
+.cart-items {
+  overflow-y: auto;
+  max-height: 300px;
+  margin-bottom: 15px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #1f2430;
+  font-size: 13px;
+}
+
+.cart-total {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-align: right;
+  color: #e60012;
+}
+
+.checkout-btn {
+  background: #e60012; 
+  color: #fff; 
+  border: none; 
+  padding: 12px; 
+  border-radius: 6px; 
+  font-weight: bold; 
+  cursor: pointer; 
+  width: 100%;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px; 
+  right: 20px;
+  background: #232936;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border-left: 4px solid #e60012;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  z-index: 2000;
+  transition: opacity 0.3s ease;
+  font-size: 14px;
 }

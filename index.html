@@ -19,7 +19,11 @@
     <nav class="nav-links"> 
       <a href="#" class="btn-store">🛍️ Cửa hàng</a> 
       <a href="#">📖 Hướng dẫn</a> 
-      <a href="#">🛒 Giỏ hàng</a> 
+      <a href="#" id="cart-link">🛒 Giỏ hàng (<span id="cart-count">0</span>)</a> 
+      <!-- Phần hiển thị tài khoản động -->
+      <div id="auth-container" style="display: inline-block;">
+        <a href="index1.html" id="auth-link" style="color: #ff4d4d; font-weight: bold;">👤 Đăng nhập / Đăng ký</a>
+      </div>
     </nav> 
   </header> 
 
@@ -40,23 +44,31 @@
   <section class="product-section">
     
     <div class="brand-tabs">
-      <button class="tab-btn active">Tất cả</button>
-      <button class="tab-btn">Yonex <small>20</small></button>
-      <button class="tab-btn">Li-Ning <small>12</small></button>
-      <button class="tab-btn">Victor <small>12</small></button>
-      <button class="tab-btn">Kumpoo <small>10</small></button>
+      <button class="tab-btn active" data-brand="all">Tất cả</button>
+      <button class="tab-btn" data-brand="Yonex">Yonex <small>20</small></button>
+      <button class="tab-btn" data-brand="Li-Ning">Li-Ning <small>12</small></button>
+      <button class="tab-btn" data-brand="Victor">Victor <small>12</small></button>
+      <button class="tab-btn" data-brand="Kumpoo">Kumpoo <small>10</small></button>
     </div>
 
     <div class="filter-bar">
-      <input type="text" placeholder="🔍 Tìm tên vợt, dòng vợt...">
-      <select><option value="">Tất cả trọng lượng</option><option value="4U">4U (80-84g)</option></select>
-      <select><option value="">Tất cả thông số</option></select>
-      <select><option value="">Nổi bật</option></select>
+      <input type="text" id="search-input" placeholder="🔍 Tìm tên vợt, dòng vợt...">
+      <select id="weight-filter">
+        <option value="">Tất cả trọng lượng</option>
+        <option value="4U">4U (80-84g)</option>
+        <option value="3U">3U (85-89g)</option>
+        <option value="5U">5U (75-79g)</option>
+      </select>
+      <select id="sort-select">
+        <option value="default">Nổi bật</option>
+        <option value="asc">Giá: Thấp đến cao</option>
+        <option value="desc">Giá: Cao đến thấp</option>
+      </select>
     </div>
 
-    <div class="product-grid">
+    <div class="product-grid" id="product-grid">
       
-      <div class="card">
+      <div class="card" data-brand="Yonex" data-price="4500000" data-weight="4U">
         <div class="card-img" style="background-color: #8b0000;">
           <span class="badge-tag">BESTSELLER</span>
           <span class="badge-sale">-13%</span>
@@ -81,7 +93,7 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-brand="Yonex" data-price="4300000" data-weight="4U">
         <div class="card-img" style="background-color: #2b3e50;">
           <span class="badge-brand">Yonex</span>
           <img src="88D PRO 2025 .png" alt="Astrox 88D Pro 2025" style="max-height: 180px; object-fit: contain;">
@@ -104,7 +116,7 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-brand="Yonex" data-price="4890000" data-weight="4U">
         <div class="card-img" style="background-color: #1a1a2e;">
           <span class="badge-tag">LIMITED</span>
           <span class="badge-brand">Yonex</span>
@@ -128,7 +140,7 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-brand="Yonex" data-price="4750000" data-weight="3U">
         <div class="card-img" style="background-color: #2e1a2e;">
           <span class="badge-brand">Yonex</span>
           <img src="100zz bp.webp" alt="Astrox 100ZZ BP Edition" style="max-height: 180px; object-fit: contain;">
@@ -151,7 +163,7 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-brand="Yonex" data-price="2150000" data-weight="4U">
         <div class="card-img" style="background-color: #1e3d59;">
           <span class="badge-brand">Yonex</span>
           <img src="100 GAME.webp" alt="Nanoflare 100 Game" style="max-height: 180px; object-fit: contain;">
@@ -174,7 +186,7 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-brand="Yonex" data-price="1890000" data-weight="5U">
         <div class="card-img" style="background-color: #3b5998;">
           <span class="badge-tag">MỚI</span>
           <span class="badge-brand">Yonex</span>
@@ -198,7 +210,7 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-brand="Yonex" data-price="1350000" data-weight="4U">
         <div class="card-img" style="background-color: #2d545e;">
           <span class="badge-brand">Yonex</span>
           <img src="77 PLAY LIMITED LIGHT.webp" alt="Astrox 77 Play Limited Light" style="max-height: 180px; object-fit: contain;">
@@ -221,7 +233,7 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-brand="Yonex" data-price="990000" data-weight="4U">
         <div class="card-img" style="background-color: #1b2a47;">
           <span class="badge-brand">Yonex</span>
           <img src="voltric lite 1.webp" alt="Voltric Lite 1" style="max-height: 180px; object-fit: contain;">
@@ -247,5 +259,209 @@
     </div>
   </section>
 
+  <!-- Modal Giỏ Hàng -->
+  <div class="cart-modal" id="cart-modal">
+    <div class="cart-content">
+      <div class="cart-header">
+        <h3>🛒 Giỏ hàng của bạn</h3>
+        <button class="close-cart" id="close-cart">&times;</button>
+      </div>
+      <div class="cart-items" id="cart-items">
+        <p style="text-align: center; color: #7a7e85;">Giỏ hàng trống</p>
+      </div>
+      <div class="cart-total" id="cart-total">Tổng tiền: 0 đ</div>
+      <button class="checkout-btn" id="checkout-btn">Thanh toán ngay</button>
+    </div>
+  </div>
+
+  <!-- Script xử lý tính năng -->
+  <script>
+    // Hiển thị tên người dùng nếu đã đăng nhập
+    const currentUser = localStorage.getItem('currentUser');
+    const authContainer = document.getElementById('auth-container');
+    if (currentUser) {
+      authContainer.innerHTML = `
+        <span style="color: #4cd137; font-weight: bold;">👤 Chào, ${currentUser}</span>
+        <button id="logout-btn" style="background: none; border: 1px solid #ff4d4d; color: #ff4d4d; padding: 4px 8px; border-radius: 4px; margin-left: 10px; cursor: pointer;">Đăng xuất</button>
+      `;
+      document.getElementById('logout-btn').addEventListener('click', () => {
+        localStorage.removeItem('currentUser');
+        location.reload();
+      });
+    }
+
+    // Lọc theo Brand Tabs
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const cards = document.querySelectorAll('.card');
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const selectedBrand = btn.getAttribute('data-brand');
+
+        cards.forEach(card => {
+          if (selectedBrand === 'all' || card.getAttribute('data-brand') === selectedBrand) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Tìm kiếm sản phẩm
+    const searchInput = document.getElementById('search-input');
+    searchInput.addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase();
+      cards.forEach(card => {
+        const title = card.querySelector('.card-title').innerText.toLowerCase();
+        if (title.includes(term)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+
+    // Lọc theo trọng lượng
+    const weightFilter = document.getElementById('weight-filter');
+    weightFilter.addEventListener('change', (e) => {
+      const val = e.target.value;
+      cards.forEach(card => {
+        const weight = card.getAttribute('data-weight');
+        if (!val || weight === val) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+
+    // Sắp xếp giá
+    const sortSelect = document.getElementById('sort-select');
+    const grid = document.getElementById('product-grid');
+    sortSelect.addEventListener('change', (e) => {
+      const sortVal = e.target.value;
+      const cardArr = Array.from(cards);
+
+      cardArr.sort((a, b) => {
+        const priceA = parseInt(a.getAttribute('data-price'));
+        const priceB = parseInt(b.getAttribute('data-price'));
+        if (sortVal === 'asc') return priceA - priceB;
+        if (sortVal === 'desc') return priceB - priceA;
+        return 0;
+      });
+
+      cardArr.forEach(card => grid.appendChild(card));
+    });
+
+    // Giỏ hàng logic
+    let cart = JSON.parse(localStorage.getItem('racket_cart')) || [];
+    const cartCount = document.getElementById('cart-count');
+    const cartModal = document.getElementById('cart-modal');
+    const cartLink = document.getElementById('cart-link');
+    const closeCart = document.getElementById('close-cart');
+    const cartItemsContainer = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+
+    function updateCartUI() {
+      cartCount.innerText = cart.reduce((sum, item) => sum + item.quantity, 0);
+      localStorage.setItem('racket_cart', JSON.stringify(cart));
+      
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p style="text-align: center; color: #7a7e85;">Giỏ hàng trống</p>';
+        cartTotal.innerText = 'Tổng tiền: 0 đ';
+        return;
+      }
+
+      let html = '';
+      let total = 0;
+      cart.forEach((item, index) => {
+        let itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        html += `
+          <div class="cart-item">
+            <div>
+              <strong>${item.name}</strong><br>
+              <small>${item.price.toLocaleString()} đ x ${item.quantity}</small>
+            </div>
+            <button onclick="removeItem(${index})" style="background:none; border:none; color:#ff4d4d; cursor:pointer;">Xóa</button>
+          </div>
+        `;
+      });
+      cartItemsContainer.innerHTML = html;
+      cartTotal.innerText = `Tổng tiền: ${total.toLocaleString()} đ`;
+    }
+
+    window.removeItem = function(index) {
+      cart.splice(index, 1);
+      updateCartUI();
+    }
+
+    document.querySelectorAll('.btn-add').forEach((btn, idx) => {
+      btn.addEventListener('click', () => {
+        const card = cards[idx];
+        const name = card.querySelector('.card-title').innerText;
+        const price = parseInt(card.getAttribute('data-price'));
+
+        const existing = cart.find(item => item.name === name);
+        if (existing) {
+          existing.quantity += 1;
+        } else {
+          cart.push({ name, price, quantity: 1 });
+        }
+        updateCartUI();
+
+        showToast(`Đã thêm "${name}" vào giỏ hàng!`);
+      });
+    });
+
+    cartLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      cartModal.style.display = 'flex';
+    });
+
+    closeCart.addEventListener('click', () => {
+      cartModal.style.display = 'none';
+    });
+
+    // Xử lý nút Thanh toán (Kiểm tra đăng nhập + Nhập SĐT không bắt buộc)
+    document.getElementById('checkout-btn').addEventListener('click', () => {
+      if (cart.length === 0) {
+        alert('Giỏ hàng của bạn đang trống!');
+        return;
+      }
+
+      const isLoggedIn = localStorage.getItem('currentUser');
+      
+      if (!isLoggedIn) {
+        alert('Vui lòng đăng nhập để tiến hành đặt hàng!');
+        window.location.href = 'index1.html';
+        return;
+      }
+
+      let phone = prompt('Nhập số điện thoại nhận hàng của bạn (có thể bỏ qua nếu không muốn):');
+      
+      if (phone !== null) {
+        alert(`Đặt hàng thành công! Cảm ơn bạn ${isLoggedIn} đã ủng hộ Racket Pro.` + (phone ? ` SĐT liên hệ: ${phone}` : ''));
+        cart = [];
+        updateCartUI();
+        cartModal.style.display = 'none';
+      }
+    });
+
+    function showToast(message) {
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.innerText = message;
+      document.body.appendChild(toast);
+      setTimeout(() => {
+        toast.remove();
+      }, 2500);
+    }
+
+    updateCartUI();
+  </script>
 </body>
 </html>
